@@ -3,6 +3,7 @@ import { Grid, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+// Define GalleryItem with Grid v2
 interface GalleryItemProps {
   to: string;
   title: string;
@@ -27,14 +28,15 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
+          margin: 1, // Add margin to create space around each item
           "& img": {
             width: "100%",
             height: "auto",
-            boxShadow: "8px 8px 20px rgba(0, 0, 0, 0.5)", // Add shadow directly here
-            transition: "opacity 0.3s ease", // Smooth transition for hover
+            boxShadow: "8px 8px 20px rgba(0, 0, 0, 0.5)",
+            transition: "opacity 0.3s ease",
             "&:hover": {
-              opacity: 0.7, // Change opacity on hover
-            }, // Optional: rounded corners
+              opacity: 0.7,
+            },
           },
         }}
       >
@@ -48,56 +50,29 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
 );
 
 const MainGalleryPage: React.FC = () => {
-  const { t } = useTranslation(); // Translation hook
+  const { t } = useTranslation();
 
   const galleryItems = [
-    {
-      to: "/gallery/events",
-      imgSrc: "/image1.jpg",
-      imgAlt: "Events",
-      title: t("galleryEvents"),
-    },
-    {
-      to: "/gallery/travel",
-      imgSrc: "/image2.jpg",
-      imgAlt: "Travel",
-      title: t("galleryTravel"),
-    },
-    {
-      to: "/gallery/family",
-      imgSrc: "/image3.jpg",
-      imgAlt: "Family",
-      title: t("galleryFamily"),
-    },
-    {
-      to: "/gallery/others",
-      imgSrc: "/image4.jpg",
-      imgAlt: "Others",
-      title: t("galleryOthers"),
-    },
+    { to: "/gallery/events", imgSrc: "/image1.jpg", imgAlt: "Events", title: t("galleryEvents") },
+    { to: "/gallery/travel", imgSrc: "/image2.jpg", imgAlt: "Travel", title: t("galleryTravel") },
+    { to: "/gallery/family", imgSrc: "/image3.jpg", imgAlt: "Family", title: t("galleryFamily") },
+    { to: "/gallery/others", imgSrc: "/image4.jpg", imgAlt: "Others", title: t("galleryOthers") },
   ];
 
   return (
     <Box
       sx={{
         flexGrow: 1,
-        p: { xs: 2, sm: 4, md: 14 }, // Padding on left and right for smaller and larger screens
+        p: { xs: 2, sm: 4, md: 14 },
         px: { sm: 8 },
-        maxWidth: '1280px' // Extra padding on left and right for larger screens
+        maxWidth: '1280px',
+        mx: 'auto', // Center the container horizontally
       }}
     >
       <Grid
         container
-        spacing={{ xs: 2, sm: 3, md: 4, lg: 6 }} // Adjust spacing for different screen sizes
+        spacing={{ xs: 2, sm: 3, md: 4, lg: 6 }} // Adjust spacing between grid items
         columns={12}
-        sx={{
-          gridTemplateColumns: {
-            xs: "repeat(1, 1fr)", // 1 column for extra-small screens
-            sm: "repeat(2, 1fr)", // 2 columns for small screens (600px and up)
-            md: "repeat(2, 1fr)", // 2 columns for medium screens (900px and up)
-            lg: "repeat(2, 1fr)", // 2 columns for large screens (1200px and up)
-          },
-        }}
       >
         {galleryItems.map((item, index) => (
           <GalleryItem
