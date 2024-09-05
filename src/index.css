@@ -58,3 +58,7 @@
 .listItem:hover {
   opacity: 1; /* Opacity on hover */
 }
+
+.logo-mobile{
+font-size: 1.2rem;
+}

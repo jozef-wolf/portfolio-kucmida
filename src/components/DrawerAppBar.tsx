@@ -167,7 +167,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { md: "none" }, color: "black" }}
           >
-            <MenuIcon sx={{ fontSize: 40 }} />
+            <MenuIcon sx={{ fontSize: 50 }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -186,7 +186,30 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             }}
           >
             <CenteredUnderlineLink to="/" color="black">
-            Paweł Kucmida {t("photography")}
+              Paweł Kucmida {t("photography")}
+            </CenteredUnderlineLink>
+          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              alignItems: "end",
+              textAlign: { md: "left" },
+              marginLeft: { md: "1rem" },
+              color: "black",
+              opacity: 0.7, // Default opacity
+              "&:hover": {
+                opacity: 1, // Opacity on hover
+                transition: "opacity 0.3s ease", // Smooth transition effect
+              },
+            }}
+          >
+            <CenteredUnderlineLink to="/" color="black">
+              <div className="logo-mobile">
+              Paweł Kucmida {t("photography")}
+              </div>
             </CenteredUnderlineLink>
           </Typography>
           <Box
