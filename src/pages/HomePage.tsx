@@ -34,7 +34,6 @@ const HomePage = () => {
         alignItems: "center",
         overflow: "hidden",
         position: "relative",
-        width: "100vw",
         height: "100vh",
         // backgroundColor: "#000", // Optional: to see image borders more clearly
       }}
