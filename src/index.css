@@ -1,7 +1,11 @@
+body {
+  font-family: 'DIN W02 Light', sans-serif,Arial, Helvetica, ;
+}
+
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   overflow-x: hidden;
 }
@@ -13,7 +17,6 @@
 }
 
 .Container {
-  max-width: 1280px; /* Ensure container width is controlled */
   box-sizing: border-box;
 }
 
@@ -46,4 +49,5 @@
 
 .logo-mobile {
   font-size: 1.2rem;
+  text-align: left;
 }

@@ -20,13 +20,23 @@ const ContactPage: React.FC = () => {
         }}
       >
         <Toolbar />
-        <Typography variant="h4" gutterBottom>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ fontFamily: "DIN W02 Light", fontSize: "3rem" }}
+        >
           {t("contactTitle")}
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem" }}>
+        <Typography sx={{ fontSize: "1.5rem", fontFamily: "DIN W02 Light" }}>
           {t("contactDescription")}
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem", marginTop: "1rem" }}>
+        <Typography
+          sx={{
+            fontSize: "1.5rem",
+            marginTop: "1rem",
+            fontFamily: "DIN W02 Light",
+          }}
+        >
           {t("phoneLabel")}{" "}
           <a
             href="tel:999999999"
@@ -39,7 +49,7 @@ const ContactPage: React.FC = () => {
             +48 999 999 999
           </a>
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem" }}>
+        <Typography sx={{ fontSize: "1.5rem", fontFamily: "DIN W02 Light" }}>
           {t("emailLabel")}{" "}
           <a
             href="mailto:example@gmail.com"
@@ -52,10 +62,10 @@ const ContactPage: React.FC = () => {
             example@gmail.com
           </a>
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem", marginTop: "1rem" }}>
+        <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem", fontFamily: "DIN W02 Light" }}>
           {t("contactFooter")}
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem", mt: 2 }}>
+        <Typography sx={{ fontSize: "1.5rem", mt: 2 }}>
           <a
             href="https://www.instagram.com/pawel_kucmida__/"
             target="_blank"

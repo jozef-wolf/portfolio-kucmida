@@ -21,7 +21,12 @@ const Footer = () => {
       <Typography
         variant="body2"
         color="textSecondary"
-        sx={{ flex: 1, textAlign: "center" }}
+        sx={{
+          flex: 1,
+          textAlign: "center",
+          fontSize: "1.25rem",
+          fontFamily: "DIN W02 Light",
+        }}
       >
         © 2024 Paweł Kucmida {t("photography")}
       </Typography>

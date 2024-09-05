@@ -6,10 +6,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './index.css';
 import App from './App';
 import HomePage from './pages/HomePage';
-import MainGalleryPage from './pages/MainGalleryPage';
+import PortfolioCategoryPage from './pages/PortfolioCategoryPage';
 import AboutMe from './pages/AboutMePage';
 import Contact from './pages/ContactPage';
-import GalleryPage from './pages/GalleryPage';
+import PortfolioPage from './pages/PortfolioPage';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +21,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'gallery',
-        element: <MainGalleryPage />,
+        path: 'portfolio',
+        element: <PortfolioCategoryPage />,
       },
       {
-        path: 'gallery/:category',
-        element: <GalleryPage />,
+        path: 'portfolio/:category',
+        element: <PortfolioPage />,
       },
       {
         path: 'about-me',

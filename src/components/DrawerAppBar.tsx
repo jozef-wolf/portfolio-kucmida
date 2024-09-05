@@ -78,8 +78,8 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             },
           }}
         >
-          <CenteredUnderlineLink to="/gallery">
-            {t("gallery")}
+          <CenteredUnderlineLink to="/portfolio">
+            {t("portfolio")}
           </CenteredUnderlineLink>
         </ListItem>
         <ListItem
@@ -223,8 +223,8 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             <CenteredUnderlineLink to="/about-me">
               {t("aboutMe")}
             </CenteredUnderlineLink>
-            <CenteredUnderlineLink to="/gallery">
-              {t("gallery")}
+            <CenteredUnderlineLink to="/portfolio">
+              {t("portfolio")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/contact">
               {t("contact")}

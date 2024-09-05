@@ -1,6 +1,6 @@
 {
   "photography": "Photography",
-  "gallery": "Gallery",
+  "portfolio": "Portfolio",
   "aboutMe": "About Me",
   "contact": "Contact",
   "contactTitle": "Contact",
@@ -8,9 +8,9 @@
   "phoneLabel": "Phone number:",
   "emailLabel": "Email address:",
   "contactFooter": "I will respond to all inquiries and try to help as soon as possible. Looking forward to your message!",
-  "galleryEvents": "Events",
-  "galleryTravel": "Travel",
-  "galleryFamily": "Family",
-  "galleryOthers": "Others",
+  "portfolioEvents": "Events",
+  "portfolioTravel": "Travel",
+  "portfolioFamily": "Family",
+  "portfolioOthers": "Others",
   "categoryNotFound": "Category not found"
 }

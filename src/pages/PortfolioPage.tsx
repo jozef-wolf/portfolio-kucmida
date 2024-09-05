@@ -145,13 +145,13 @@ const galleries: Record<string, MediaItem[]> = {
   ],
 };
 
-export default function GalleryPage() {
+export default function PortfolioPage() {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation(); // Translation hook
 
   if (!category || !galleries[category]) {
-    return <div>{t('categoryNotFound')}</div>;
+    return <div>{t("categoryNotFound")}</div>;
   }
 
   const media = galleries[category];
@@ -160,41 +160,44 @@ export default function GalleryPage() {
   };
 
   return (
-    <Box className="gallery-page" sx={{ p: 2 }}>
+    <Box className="Portfolio-page" sx={{ p: 2 }}>
       <Box
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          mb: 2, // margin-bottom for spacing below the header
-          width: '100%', // Ensure the container spans the full width
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          mb: 2,
+          mt: 4, // margin-bottom for spacing below the header
+          width: "100%", // Ensure the container spans the full width
         }}
       >
         <Box
           sx={{
-            position: 'absolute',
+            position: "absolute",
             left: 0,
-            display: 'flex',
-            alignItems: 'center',
-            height: '100%',
+            display: "flex",
+            alignItems: "center",
+            height: "100%",
             px: 2, // padding on the left
           }}
         >
           <button onClick={handleBack} className="back-button">
-            <ArrowBackIosIcon sx={{ fontSize: 40 }} />
+            <ArrowBackIosIcon sx={{ fontSize: 40, fontWeight: "lighter" }} />
           </button>
         </Box>
         <Box
           sx={{
-            textAlign: 'center',
+            textAlign: "center",
             flexGrow: 1,
-            mx: 'auto',
+            mx: "auto",
           }}
         >
-          <h1 style={{ margin: 0 }}>
-            {t(`gallery${category.charAt(0).toUpperCase() + category.slice(1)}`)}
-          </h1>
+          <h2 style={{ margin: 0, fontWeight: "lighter",fontFamily: "DIN W02 Light", fontSize: "2rem" }}>
+            {t(
+              `portfolio${category.charAt(0).toUpperCase() + category.slice(1)}`
+            )}
+          </h2>
         </Box>
       </Box>
       <ResponsiveGallery

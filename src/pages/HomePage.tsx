@@ -63,7 +63,7 @@ const HomePage = () => {
               objectFit: "cover",
               opacity: loaded ? 1 : 0,
               transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+              transition: "opacity 1s ease-in-out, transform 0.5s ease-in-out",
             }}
           />
         </Box>

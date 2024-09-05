@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 
 const AboutMePage = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   return (
     <div>
       <Box
@@ -17,10 +17,10 @@ const AboutMePage = () => {
         }}
       >
         <Toolbar />
-        <Typography variant="h4" gutterBottom>
-        {t("aboutMe")}
+        <Typography variant="h4" gutterBottom sx={{ fontFamily: "DIN W02 Light", fontSize: "3rem" }}>
+          {t("aboutMe")}
         </Typography>
-        <Typography sx={{ fontSize: "1.25rem" }}>
+        <Typography sx={{ fontFamily: "DIN W02 Light", fontSize: "1.5rem" }}>
           Lorem Ipsum: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Phasellus imperdiet, ligula non blandit scelerisque, erat orci
           convallis tortor, vel malesuada erat ipsum ac lectus. Sed feugiat,
@@ -32,7 +32,6 @@ const AboutMePage = () => {
           Suspendisse vel fermentum tortor. Curabitur nec lectus nec eros
           ultricies auctor. Nulla facilisi. Vivamus fringilla, erat a aliquam
           faucibus, magna nunc varius lorem, vel aliquam quam ante nec velit.
-   
         </Typography>
       </Box>
     </div>
