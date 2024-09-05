@@ -55,6 +55,8 @@ const ContactPage = () => {
         <Typography sx={{ fontSize: "1.25rem", mt: 2 }}>
           <a
             href="https://www.instagram.com/pawel_kucmida__/"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <InstagramIcon

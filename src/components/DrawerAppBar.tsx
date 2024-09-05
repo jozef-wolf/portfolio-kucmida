@@ -10,8 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
-import CenteredUnderlineLink from "./CenteredUnderlineLink"; // Import the new component
+import CenteredUnderlineLink from "./CenteredUnderlineLink"; // Import the updated component
 
 interface Props {
   window?: () => Window;
@@ -45,12 +44,9 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           },
         }}
       >
-        <Link
-          to="/"
-          style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
-        >
+        <CenteredUnderlineLink to="/" color="black">
           Paweł Kucmida Fotografia
-        </Link>
+        </CenteredUnderlineLink>
       </Typography>
       <Divider />
       <List
@@ -165,15 +161,9 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               },
             }}
           >
-            <Link
-              to="/"
-              style={{
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
+            <CenteredUnderlineLink to="/" color="black">
               Paweł Kucmida Fotografia
-            </Link>
+            </CenteredUnderlineLink>
           </Typography>
           <Box
             sx={{

@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import InstagramIcon from '@mui/icons-material/Instagram';
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = () => {
   return (
@@ -8,20 +8,26 @@ const Footer = () => {
       component="footer"
       sx={{
         p: 2,
-        display: 'flex', // Use flexbox for alignment
-        justifyContent: 'space-between', // Space out items
-        alignItems: 'center', // Center items vertically
+        display: "flex", // Use flexbox for alignment
+        justifyContent: "space-between", // Space out items
+        alignItems: "center", // Center items vertically
         backgroundColor: "#f8f8f8",
         borderTop: "1px solid #e0e0e0",
         mt: "auto",
       }}
     >
-      <Typography variant="body2" color="textSecondary" sx={{ flex: 1, textAlign: 'center' }}>
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        sx={{ flex: 1, textAlign: "center" }}
+      >
         © 2024 Paweł Kucmida Fotografia
       </Typography>
       <Box>
         <a
           href="https://www.instagram.com/pawel_kucmida__/"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <InstagramIcon

@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 interface CenteredUnderlineLinkProps {
   to: string;
   children: React.ReactNode;
+  color?: string; // Optional color prop
 }
 
 const CenteredUnderlineLink: React.FC<CenteredUnderlineLinkProps> = ({ to, children, color = "black" }) => (
@@ -26,7 +27,7 @@ const CenteredUnderlineLink: React.FC<CenteredUnderlineLinkProps> = ({ to, child
         bottom: 0,
         width: "100%",
         height: "1px",
-        backgroundColor: "#696969d9", // Use the same color as the link
+        backgroundColor: color, // Use the same color as the link
         transform: "translateX(-50%) scaleX(0)",
         transition: "transform 0.3s ease",
       },
