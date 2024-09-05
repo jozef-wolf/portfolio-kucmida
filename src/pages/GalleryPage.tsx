@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ResponsiveGallery from "react-responsive-gallery";
-
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { Box } from '@mui/material';
 // Define an interface for the image item
 interface MediaItem {
   src: string;
@@ -143,7 +144,6 @@ const galleries: Record<string, MediaItem[]> = {
       orderM: 12,
       orderL: 12,
     },
-    // Add more event images as needed
   ],
 };
 
@@ -157,26 +157,58 @@ export default function GalleryPage() {
 
   const media = galleries[category];
   const handleBack = () => {
-    navigate(-1); // Go back one step in the history
+    navigate(-1);
   };
   return (
-    <div className="gallery-page">
-      <button onClick={handleBack} className="back-button">
-        Back
-      </button>
-      <h1>{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
-      <ResponsiveGallery
-        useLightBox
-        numOfMediaPerRow={{
-          xs: 1,
-          s: 1,
-          m: 1,
-          l: 2,
-          xl: 2,
-          xxl: 3,
+    <Box className="gallery-page" sx={{ p: 2 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        mb: 2, // margin-bottom for spacing below the header
+        width: '100%', // Ensure the container spans the full width
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          left: 0,
+          display: 'flex',
+          alignItems: 'center',
+          height: '100%',
+          px: 2, // padding on the left
         }}
-        media={media}
-      />
-    </div>
+      >
+        <button onClick={handleBack} className="back-button">
+          <ArrowBackIosIcon sx={{ fontSize: 40 }} />
+        </button>
+      </Box>
+      <Box
+        sx={{
+          textAlign: 'center',
+          flexGrow: 1,
+          mx: 'auto',
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
+          {category.charAt(0).toUpperCase() + category.slice(1)}
+        </h1>
+      </Box>
+    </Box>
+    <ResponsiveGallery
+      useLightBox
+      numOfMediaPerRow={{
+        xs: 1,
+        s: 1,
+        m: 1,
+        l: 2,
+        xl: 2,
+        xxl: 3,
+      }}
+      media={media}
+    />
+  </Box>
   );
 }

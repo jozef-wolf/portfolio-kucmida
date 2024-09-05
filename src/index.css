@@ -1,18 +1,60 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Quicksand", sans-serif, Inter, system-ui, Avenir, Helvetica,
+    Arial;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.Main {
+  flex: 1; /* Allow Main to grow and fill available space */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center content vertically */
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent any scroll bars */
+}
+
+.Container {
+  /* max-width: 1280px; */
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
 .Gallery {
   text-align: center;
   padding: 20px;
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+.back-button {
+  opacity: 70%;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.back-button:hover {
+  opacity: 100%;
+}
+.listItem {
+  opacity: 0.7; /* Default opacity */
+  transition: opacity 0.3s ease; /* Smooth transition effect */
+}
+
+.listItem:hover {
+  opacity: 1; /* Opacity on hover */
 }

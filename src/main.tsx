@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -10,7 +11,6 @@ import Contact from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 // import ErrorPage from "./pages/ErrorPage";
 
-// Create a router with your routes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     errorElement: <></>,
     children: [
       {
-        index: true, // This is the default route for '/'
+        index: true,
         element: <HomePage />,
       },
       {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <MainGalleryPage />,
       },
       {
-        path: 'gallery/:category',
+        path: "gallery/:category",
         element: <GalleryPage />,
       },
       {
@@ -41,8 +41,22 @@ const router = createBrowserRouter([
   },
 ]);
 
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768, // Custom breakpoint for small screens
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );

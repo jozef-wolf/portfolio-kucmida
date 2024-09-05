@@ -7,24 +7,19 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import CenteredUnderlineLink from "./CenteredUnderlineLink"; // Import the new component
+
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
-export default function DrawerAppBar(props: Props) {
+const DrawerAppBar: React.FC<Props> = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -34,18 +29,90 @@ export default function DrawerAppBar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+      <Typography
+        variant="h6"
+        sx={{
+          my: 2,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "6rem",
+          paddingX: "0.1rem",
+          opacity: 0.7, // Default opacity
+          "&:hover": {
+            opacity: 1, // Opacity on hover
+            transition: "opacity 0.3s ease", // Smooth transition effect
+          },
+        }}
+      >
+        <Link
+          to="/"
+          style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
+        >
+          Paweł Kucmida Fotografia
+        </Link>
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+      <List
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "2rem",
+          marginTop: "2rem",
+        }}
+      >
+        <ListItem
+          disablePadding
+          sx={{
+            mb: 2, // Margin bottom
+            textAlign: "center", // Center text
+            justifyContent: "center", // Center content horizontally
+            opacity: 0.7, // Default opacity
+            "&:hover": {
+              opacity: 1, // Opacity on hover
+              transition: "opacity 0.3s ease", // Smooth transition effect
+            },
+          }}
+        >
+          <CenteredUnderlineLink to="/gallery">
+            Galeria
+          </CenteredUnderlineLink>
+        </ListItem>
+        <ListItem
+          disablePadding
+          sx={{
+            mb: 2, // Margin bottom
+            textAlign: "center", // Center text
+            justifyContent: "center", // Center content horizontally
+            opacity: 0.7, // Default opacity
+            "&:hover": {
+              opacity: 1, // Opacity on hover
+              transition: "opacity 0.3s ease", // Smooth transition effect
+            },
+          }}
+        >
+          <CenteredUnderlineLink to="/about-me">
+            O mnie
+          </CenteredUnderlineLink>
+        </ListItem>
+        <ListItem
+          disablePadding
+          sx={{
+            mb: 2, // Margin bottom
+            textAlign: "center", // Center text
+            justifyContent: "center", // Center content horizontally
+            opacity: 0.7, // Default opacity
+            "&:hover": {
+              opacity: 1, // Opacity on hover
+              transition: "opacity 0.3s ease", // Smooth transition effect
+            },
+          }}
+        >
+          <CenteredUnderlineLink to="/contact">
+            Kontakt
+          </CenteredUnderlineLink>
+        </ListItem>
       </List>
     </Box>
   );
@@ -56,28 +123,74 @@ export default function DrawerAppBar(props: Props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav">
-        <Toolbar>
+      <AppBar
+        component="nav"
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white
+          height: "6rem", // Increase height
+          backdropFilter: "blur(10px)", // Optional: adds a blur effect
+          boxShadow: "none", // Optional: remove shadow
+          px: 2, // Optional: add horizontal padding
+        }}
+      >
+        <Toolbar
+          sx={{
+            height: "100%", // Ensure Toolbar takes full height of AppBar
+            display: "flex",
+            alignItems: "center", // Vertically center the content
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { md: "none" }, color: "black" }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: 40 }} />
           </IconButton>
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "block" },
+              textAlign: { md: "left" },
+              marginLeft: { md: "1rem" },
+              color: "black",
+              opacity: 0.7, // Default opacity
+              "&:hover": {
+                opacity: 1, // Opacity on hover
+                transition: "opacity 0.3s ease", // Smooth transition effect
+              },
+            }}
           >
-            <Link to="/">MUI</Link>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              Paweł Kucmida Fotografia
+            </Link>
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Link to="/gallery">Gallery</Link>
-            <Link to="/about-me">About Me</Link>
-            <Link to="/contact">Contact</Link>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              flexGrow: 1,
+              justifyContent: "flex-end",
+            }}
+          >
+            <CenteredUnderlineLink to="/about-me">
+              O mnie
+            </CenteredUnderlineLink>
+            <CenteredUnderlineLink to="/gallery">
+              Galeria
+            </CenteredUnderlineLink>
+            <CenteredUnderlineLink to="/contact">
+              Kontakt
+            </CenteredUnderlineLink>
           </Box>
         </Toolbar>
       </AppBar>
@@ -88,10 +201,11 @@ export default function DrawerAppBar(props: Props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: { xs: "block", md: "none" },
+            height: "10rem",
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
@@ -106,4 +220,6 @@ export default function DrawerAppBar(props: Props) {
       </Box>
     </Box>
   );
-}
+};
+
+export default DrawerAppBar;
