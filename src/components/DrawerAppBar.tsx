@@ -10,7 +10,9 @@ import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import CenteredUnderlineLink from "./CenteredUnderlineLink"; // Import the updated component
+import CenteredUnderlineLink from "./CenteredUnderlineLink";
+import { useTranslation } from "react-i18next";
+import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 
 interface Props {
   window?: () => Window;
@@ -21,9 +23,14 @@ const drawerWidth = 240;
 const DrawerAppBar: React.FC<Props> = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { t, i18n } = useTranslation(); // Translation hook
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const handleLanguageChange = (event: SelectChangeEvent<string>) => {
+    i18n.changeLanguage(event.target.value);
   };
 
   const drawer = (
@@ -45,7 +52,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
         }}
       >
         <CenteredUnderlineLink to="/" color="black">
-          Paweł Kucmida Fotografia
+          Paweł Kucmida {t("photography")}
         </CenteredUnderlineLink>
       </Typography>
       <Divider />
@@ -72,7 +79,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           }}
         >
           <CenteredUnderlineLink to="/gallery">
-            Galeria
+            {t("gallery")}
           </CenteredUnderlineLink>
         </ListItem>
         <ListItem
@@ -89,7 +96,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           }}
         >
           <CenteredUnderlineLink to="/about-me">
-            O mnie
+            {t("aboutMe")}
           </CenteredUnderlineLink>
         </ListItem>
         <ListItem
@@ -106,8 +113,25 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           }}
         >
           <CenteredUnderlineLink to="/contact">
-            Kontakt
+            {t("contact")}
           </CenteredUnderlineLink>
+        </ListItem>
+        <ListItem
+          disablePadding
+          sx={{
+            mb: 2, // Margin bottom
+            textAlign: "center", // Center text
+            justifyContent: "center", // Center content horizontally
+          }}
+        >
+          <Select
+            value={i18n.language}
+            onChange={handleLanguageChange}
+            sx={{ width: "120px" }}
+          >
+            <MenuItem value="en">English</MenuItem>
+            <MenuItem value="pl">Polski</MenuItem>
+          </Select>
         </ListItem>
       </List>
     </Box>
@@ -162,7 +186,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             }}
           >
             <CenteredUnderlineLink to="/" color="black">
-              Paweł Kucmida Fotografia
+            Paweł Kucmida {t("photography")}
             </CenteredUnderlineLink>
           </Typography>
           <Box
@@ -170,17 +194,26 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               display: { xs: "none", md: "flex" },
               flexGrow: 1,
               justifyContent: "flex-end",
+              alignItems: "center",
             }}
           >
             <CenteredUnderlineLink to="/about-me">
-              O mnie
+              {t("aboutMe")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/gallery">
-              Galeria
+              {t("gallery")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/contact">
-              Kontakt
+              {t("contact")}
             </CenteredUnderlineLink>
+            <Select
+              value={i18n.language}
+              onChange={handleLanguageChange}
+              sx={{ ml: 2 }}
+            >
+              <MenuItem value="en">English</MenuItem>
+              <MenuItem value="pl">Polski</MenuItem>
+            </Select>
           </Box>
         </Toolbar>
       </AppBar>

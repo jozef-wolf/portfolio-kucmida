@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useTranslation } from "react-i18next";
 
 const AboutMePage = () => {
+  const { t } = useTranslation(); 
   return (
     <div>
       <Box
@@ -16,7 +18,7 @@ const AboutMePage = () => {
       >
         <Toolbar />
         <Typography variant="h4" gutterBottom>
-          O mnie
+        {t("aboutMe")}
         </Typography>
         <Typography sx={{ fontSize: "1.25rem" }}>
           Lorem Ipsum: Lorem ipsum dolor sit amet, consectetur adipiscing elit.

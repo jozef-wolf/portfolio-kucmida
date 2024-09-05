@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface GalleryItemProps {
   to: string;
@@ -47,30 +48,32 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
 );
 
 const MainGalleryPage: React.FC = () => {
+  const { t } = useTranslation(); // Translation hook
+
   const galleryItems = [
     {
       to: "/gallery/events",
       imgSrc: "/image1.jpg",
       imgAlt: "Events",
-      title: "Eventy",
+      title: t("galleryEvents"),
     },
     {
       to: "/gallery/travel",
       imgSrc: "/image2.jpg",
       imgAlt: "Travel",
-      title: "Architektura",
+      title: t("galleryTravel"),
     },
     {
       to: "/gallery/family",
       imgSrc: "/image3.jpg",
       imgAlt: "Family",
-      title: "Portrety",
+      title: t("galleryFamily"),
     },
     {
       to: "/gallery/others",
       imgSrc: "/image4.jpg",
       imgAlt: "Others",
-      title: "Reportaż",
+      title: t("galleryOthers"),
     },
   ];
 

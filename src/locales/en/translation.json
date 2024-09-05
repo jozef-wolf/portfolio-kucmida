@@ -1,0 +1,16 @@
+{
+  "photography": "Photography",
+  "gallery": "Gallery",
+  "aboutMe": "About Me",
+  "contact": "Contact",
+  "contactTitle": "Contact",
+  "contactDescription": "If you need photos or additional information, please contact me.",
+  "phoneLabel": "Phone number:",
+  "emailLabel": "Email address:",
+  "contactFooter": "I will respond to all inquiries and try to help as soon as possible. Looking forward to your message!",
+  "galleryEvents": "Events",
+  "galleryTravel": "Travel",
+  "galleryFamily": "Family",
+  "galleryOthers": "Others",
+  "categoryNotFound": "Category not found"
+}

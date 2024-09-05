@@ -1,8 +1,9 @@
-import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ResponsiveGallery from "react-responsive-gallery";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 // Define an interface for the image item
 interface MediaItem {
   src: string;
@@ -45,7 +46,6 @@ const galleries: Record<string, MediaItem[]> = {
       orderM: 12,
       orderL: 12,
     },
-    // Add more event images as needed
   ],
   travel: [
     { src: "/image1.jpg", alt: "Event 1", orderS: 1, orderM: 1, orderL: 1 },
@@ -78,7 +78,6 @@ const galleries: Record<string, MediaItem[]> = {
       orderM: 12,
       orderL: 12,
     },
-    // Add more event images as needed
   ],
   family: [
     { src: "/image1.jpg", alt: "Event 1", orderS: 1, orderM: 1, orderL: 1 },
@@ -111,7 +110,6 @@ const galleries: Record<string, MediaItem[]> = {
       orderM: 12,
       orderL: 12,
     },
-    // Add more event images as needed
   ],
   others: [
     { src: "/image1.jpg", alt: "Event 1", orderS: 1, orderM: 1, orderL: 1 },
@@ -150,65 +148,67 @@ const galleries: Record<string, MediaItem[]> = {
 export default function GalleryPage() {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation(); // Translation hook
 
   if (!category || !galleries[category]) {
-    return <div>Category not found</div>;
+    return <div>{t('categoryNotFound')}</div>;
   }
 
   const media = galleries[category];
   const handleBack = () => {
     navigate(-1);
   };
+
   return (
     <Box className="gallery-page" sx={{ p: 2 }}>
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        mb: 2, // margin-bottom for spacing below the header
-        width: '100%', // Ensure the container spans the full width
-      }}
-    >
       <Box
         sx={{
-          position: 'absolute',
-          left: 0,
           display: 'flex',
           alignItems: 'center',
-          height: '100%',
-          px: 2, // padding on the left
+          justifyContent: 'center',
+          position: 'relative',
+          mb: 2, // margin-bottom for spacing below the header
+          width: '100%', // Ensure the container spans the full width
         }}
       >
-        <button onClick={handleBack} className="back-button">
-          <ArrowBackIosIcon sx={{ fontSize: 40 }} />
-        </button>
+        <Box
+          sx={{
+            position: 'absolute',
+            left: 0,
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            px: 2, // padding on the left
+          }}
+        >
+          <button onClick={handleBack} className="back-button">
+            <ArrowBackIosIcon sx={{ fontSize: 40 }} />
+          </button>
+        </Box>
+        <Box
+          sx={{
+            textAlign: 'center',
+            flexGrow: 1,
+            mx: 'auto',
+          }}
+        >
+          <h1 style={{ margin: 0 }}>
+            {t(`gallery${category.charAt(0).toUpperCase() + category.slice(1)}`)}
+          </h1>
+        </Box>
       </Box>
-      <Box
-        sx={{
-          textAlign: 'center',
-          flexGrow: 1,
-          mx: 'auto',
+      <ResponsiveGallery
+        useLightBox
+        numOfMediaPerRow={{
+          xs: 1,
+          s: 1,
+          m: 1,
+          l: 2,
+          xl: 2,
+          xxl: 3,
         }}
-      >
-        <h1 style={{ margin: 0 }}>
-          {category.charAt(0).toUpperCase() + category.slice(1)}
-        </h1>
-      </Box>
+        media={media}
+      />
     </Box>
-    <ResponsiveGallery
-      useLightBox
-      numOfMediaPerRow={{
-        xs: 1,
-        s: 1,
-        m: 1,
-        l: 2,
-        xl: 2,
-        xxl: 3,
-      }}
-      media={media}
-    />
-  </Box>
   );
 }

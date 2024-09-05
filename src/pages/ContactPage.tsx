@@ -1,9 +1,13 @@
+import * as React from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { useTranslation } from "react-i18next";
 
-const ContactPage = () => {
+const ContactPage: React.FC = () => {
+  const { t } = useTranslation(); // Translation hook
+
   return (
     <div>
       <Box
@@ -17,13 +21,13 @@ const ContactPage = () => {
       >
         <Toolbar />
         <Typography variant="h4" gutterBottom>
-          Kontakt
+          {t("contactTitle")}
         </Typography>
         <Typography sx={{ fontSize: "1.25rem" }}>
-          Jeśli potrzebujesz zdjęć lub dodatkowych informacji, proszę o kontakt.
+          {t("contactDescription")}
         </Typography>
         <Typography sx={{ fontSize: "1.25rem", marginTop: "1rem" }}>
-          Numer telefonu:{" "}
+          {t("phoneLabel")}{" "}
           <a
             href="tel:999999999"
             style={{
@@ -36,7 +40,7 @@ const ContactPage = () => {
           </a>
         </Typography>
         <Typography sx={{ fontSize: "1.25rem" }}>
-          Adres e-mail:{" "}
+          {t("emailLabel")}{" "}
           <a
             href="mailto:example@gmail.com"
             style={{
@@ -49,8 +53,7 @@ const ContactPage = () => {
           </a>
         </Typography>
         <Typography sx={{ fontSize: "1.25rem", marginTop: "1rem" }}>
-          Odpowiem na wszystkie zapytania i postaram się jak najszybciej pomóc.
-          Czekam na Twoją wiadomość!
+          {t("contactFooter")}
         </Typography>
         <Typography sx={{ fontSize: "1.25rem", mt: 2 }}>
           <a

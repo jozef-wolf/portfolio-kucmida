@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation(); // Translation hook
   return (
     <Box
       component="footer"
@@ -21,7 +23,7 @@ const Footer = () => {
         color="textSecondary"
         sx={{ flex: 1, textAlign: "center" }}
       >
-        © 2024 Paweł Kucmida Fotografia
+        © 2024 Paweł Kucmida {t("photography")}
       </Typography>
       <Box>
         <a
