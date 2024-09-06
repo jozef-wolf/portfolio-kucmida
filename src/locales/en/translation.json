@@ -1,5 +1,5 @@
 {
-  "photography": "Photography",
+  "photoVideo": "Photo & Video",
   "portfolio": "Portfolio",
   "aboutMe": "About Me",
   "contact": "Contact",
@@ -12,5 +12,6 @@
   "portfolioTravel": "Travel",
   "portfolioFamily": "Family",
   "portfolioOthers": "Others",
+  "portfolioVideo": "Video",
   "categoryNotFound": "Category not found"
 }

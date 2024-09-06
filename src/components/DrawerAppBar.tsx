@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import CenteredUnderlineLink from "./CenteredUnderlineLink";
 import { useTranslation } from "react-i18next";
 import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 interface Props {
   window?: () => Window;
@@ -59,7 +61,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
         }}
       >
         <CenteredUnderlineLink to="/" color="black">
-          Paweł Kucmida {t("photography")}
+          Paweł Kucmida {t("photoVideo")}
         </CenteredUnderlineLink>
       </Typography>
       <Divider />
@@ -76,19 +78,31 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           sx={{
             position: "relative",
             textDecoration: "none",
-            padding: "0.5rem 0",
+            padding: "0.5rem 1rem", // Padding for spacing
             overflow: "hidden",
-            margin: "0 1rem", // Adjust margin to create space between links
+            margin: "0 1rem",
             fontFamily: "DIN W02 Light",
             fontSize: "1.5rem",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center", // Center content horizontally
+            opacity: 0.7,
+            cursor: "pointer",
+            "&:hover": {
+              opacity: 1,
+              transition: "opacity 0.3s ease",
+            },
           }}
           onClick={handlePortfolioClick}
         >
-          <div>{t("portfolio")}</div>
+          <div style={{ flex: 1, textAlign: "center" }}>{t("portfolio")}</div>
+          <div
+            style={{ position: "absolute", right: "2.75rem", top: "0.825rem" }}
+          >
+            {!portfolioMobileOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+          </div>
         </ListItem>
+
         {portfolioMobileOpen && (
           <ListItem
             disablePadding
@@ -97,7 +111,9 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               flexDirection: "column",
               alignItems: "center",
               opacity: 0.7,
-              marginY: '1rem',
+              marginY: "1rem",
+              boxShadow: "0px 0px 9px -1px #c9c7c7",
+              background: "#ececec",
               "&:hover": {
                 opacity: 1,
                 transition: "opacity 0.3s ease",
@@ -105,17 +121,20 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             }}
           >
             <CenteredUnderlineLink to="/events">
-              {t("events")}
+              {t("portfolioEvents")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/travel">
-              {t("travel")}
+              {t("portfolioTravel")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/family">
-              {t("family")}
+              {t("portfolioFamily")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/others">
-              {t("others")}
+              {t("portfolioOthers")}
             </CenteredUnderlineLink>
+            <CenteredUnderlineLink to="/video">
+                  {t("portfolioVideo")}
+                </CenteredUnderlineLink>
           </ListItem>
         )}
         <ListItem
@@ -222,7 +241,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             }}
           >
             <CenteredUnderlineLink to="/" color="black">
-              Paweł Kucmida {t("photography")}
+              Paweł Kucmida {t("photoVideo")}
             </CenteredUnderlineLink>
           </Typography>
           <Typography
@@ -244,7 +263,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           >
             <CenteredUnderlineLink to="/" color="black">
               <div className="logo-mobile">
-                Paweł Kucmida {t("photography")}
+                Paweł Kucmida {t("photoVideo")}
               </div>
             </CenteredUnderlineLink>
           </Typography>
@@ -272,44 +291,54 @@ const DrawerAppBar: React.FC<Props> = (props) => {
                 fontFamily: "DIN W02 Light",
                 fontSize: "1.5rem",
                 textAlign: "center",
+                "&:hover .dropdown": {
+                  display: "flex", // Show dropdown on hover
+                },
               }}
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <ListItem sx={{height: '5rem'}}>{t("portfolio")}</ListItem>
-              {portfolioOpen && (
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "100%",
-                    left: 0,
-                    width: "100%",
-                    zIndex: 10,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "1rem",
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    backdropFilter: "blur(10px)",
-                    boxShadow: "none",
-                    px: 2,
-                    pb: 2,
-                  }}
-                >
-                  <CenteredUnderlineLink to="/events">
-                    {t("events")}
-                  </CenteredUnderlineLink>
-                  <CenteredUnderlineLink to="/travel">
-                    {t("travel")}
-                  </CenteredUnderlineLink>
-                  <CenteredUnderlineLink to="/family">
-                    {t("family")}
-                  </CenteredUnderlineLink>
-                  <CenteredUnderlineLink to="/others">
-                    {t("others")}
-                  </CenteredUnderlineLink>
-                </Box>
-              )}
+              <ListItem sx={{ height: "5rem" }}>{t("portfolio")}</ListItem>
+              <Box
+                className="dropdown"
+                sx={{
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  width: "100%",
+                  zIndex: 10,
+                  display: portfolioOpen ? "flex" : "none",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "1rem",
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  backdropFilter: "blur(10px)",
+                  boxShadow: "none",
+                  px: 2,
+                  pb: 2,
+                  transform: portfolioOpen
+                    ? "translateY(0)"
+                    : "translateY(-20px)",
+                  opacity: portfolioOpen ? 1 : 0,
+                  transition: "transform 0.5s ease, opacity 0.7s ease",
+                }}
+              >
+                <CenteredUnderlineLink to="/events">
+                  {t("portfolioEvents")}
+                </CenteredUnderlineLink>
+                <CenteredUnderlineLink to="/travel">
+                  {t("portfolioTravel")}
+                </CenteredUnderlineLink>
+                <CenteredUnderlineLink to="/family">
+                  {t("portfolioFamily")}
+                </CenteredUnderlineLink>
+                <CenteredUnderlineLink to="/others">
+                  {t("portfolioOthers")}
+                </CenteredUnderlineLink>
+                <CenteredUnderlineLink to="/video">
+                  {t("portfolioVideo")}
+                </CenteredUnderlineLink>
+              </Box>
             </ListItem>
             <CenteredUnderlineLink to="/contact">
               {t("contact")}

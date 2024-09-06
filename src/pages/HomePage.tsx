@@ -9,9 +9,9 @@ const HomePage = () => {
     const image2 = new Image();
     const image3 = new Image();
 
-    image1.src = '/image1.jpg';
-    image2.src = '/image2.jpg';
-    image3.src = '/image3.jpg';
+    image1.src = "/image1.jpg";
+    image2.src = "/image2.jpg";
+    image3.src = "/image3.jpg";
 
     let imagesLoaded = 0;
     const onLoad = () => {
@@ -83,7 +83,8 @@ const HomePage = () => {
               objectFit: "cover",
               opacity: loaded ? 1 : 0,
               transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+              transition:
+                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
             }}
           />
         </Box>
@@ -103,7 +104,8 @@ const HomePage = () => {
               objectFit: "cover",
               opacity: loaded ? 1 : 0,
               transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition: "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+              transition:
+                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
             }}
           />
         </Box>
@@ -113,4 +115,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

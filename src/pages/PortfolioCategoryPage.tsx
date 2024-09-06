@@ -91,6 +91,12 @@ const PortfolioCategoryPage: React.FC = () => {
       imgAlt: "Others",
       title: t("portfolioOthers"),
     },
+    {
+      to: "/portfolio/video",
+      imgSrc: "/video-thumbnail.jpg", // Thumbnail for the video category
+      imgAlt: "Videos",
+      title: t("portfolioVideo"),
+    },
   ];
 
   return (
@@ -116,5 +122,6 @@ const PortfolioCategoryPage: React.FC = () => {
     </Box>
   );
 };
+
 
 export default PortfolioCategoryPage;

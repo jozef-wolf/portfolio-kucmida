@@ -1,5 +1,6 @@
 body {
   font-family: 'DIN W02 Light', sans-serif,Arial, Helvetica, ;
+  overflow-x: hidden; 
 }
 
 .App {

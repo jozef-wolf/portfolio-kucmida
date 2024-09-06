@@ -1,8 +1,9 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ResponsiveGallery from "react-responsive-gallery";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import Loader from "../components/Loader";
+import { useEffect, useState } from "react";
 
 // Define an interface for the image item
 interface MediaItem {
@@ -143,24 +144,81 @@ const galleries: Record<string, MediaItem[]> = {
       orderL: 12,
     },
   ],
+  video: [
+    {
+      src: "https://player.vimeo.com/video/97662290",
+      alt: "Video 1",
+      orderS: 1,
+      orderM: 1,
+      orderL: 1,
+      mediaClassName: "video-item",
+    },
+    {
+      src: "https://player.vimeo.com/video/97662290",
+      alt: "Video 2",
+      orderS: 2,
+      orderM: 2,
+      orderL: 2,
+      mediaClassName: "video-item",
+    },
+    {
+      src: "https://player.vimeo.com/video/97662290",
+      alt: "Video 3",
+      orderS: 3,
+      orderM: 3,
+      orderL: 3,
+      mediaClassName: "video-item",
+    },
+    {
+      src: "https://player.vimeo.com/video/97662290",
+      alt: "Video 4",
+      orderS: 4,
+      orderM: 4,
+      orderL: 4,
+      mediaClassName: "video-item",
+    },
+  ],
 };
 
 export default function PortfolioPage() {
   const { category } = useParams<{ category: string }>();
-  const navigate = useNavigate();
   const { t } = useTranslation(); // Translation hook
+
+  const [loadingVideos, setLoadingVideos] = useState<boolean[]>([]); // Track loading state for each video
+
+  useEffect(() => {
+    if (category === "video") {
+      setLoadingVideos(new Array(galleries[category].length).fill(true)); // Initialize all videos as loading
+    }
+  }, [category]);
 
   if (!category || !galleries[category]) {
     return <div>{t("categoryNotFound")}</div>;
   }
 
   const media = galleries[category];
-  const handleBack = () => {
-    navigate(-1);
+
+  const handleVideoLoad = (index: number) => {
+    setLoadingVideos((prev) => {
+      const updatedLoadingVideos = [...prev];
+      updatedLoadingVideos[index] = false; // Mark this video as loaded
+      return updatedLoadingVideos;
+    });
   };
 
   return (
-    <Box className="Portfolio-page" sx={{ p: 2 }}>
+    <Box
+      className="Portfolio-page"
+      sx={{
+        p: 2,
+        height: "100%",
+        width: "80vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -168,8 +226,8 @@ export default function PortfolioPage() {
           justifyContent: "center",
           position: "relative",
           mb: 2,
-          mt: 4, // margin-bottom for spacing below the header
-          width: "100%", // Ensure the container spans the full width
+          mt: 4,
+          width: "100%",
         }}
       >
         <Box
@@ -179,13 +237,9 @@ export default function PortfolioPage() {
             display: "flex",
             alignItems: "center",
             height: "100%",
-            px: 2, // padding on the left
+            px: 2,
           }}
-        >
-          <button onClick={handleBack} className="back-button">
-            <ArrowBackIosIcon sx={{ fontSize: 40, fontWeight: "lighter" }} />
-          </button>
-        </Box>
+        ></Box>
         <Box
           sx={{
             textAlign: "center",
@@ -193,25 +247,78 @@ export default function PortfolioPage() {
             mx: "auto",
           }}
         >
-          <h2 style={{ margin: 0, fontWeight: "lighter",fontFamily: "DIN W02 Light", fontSize: "2rem" }}>
+          <h2
+            style={{
+              margin: 0,
+              fontWeight: "lighter",
+              fontFamily: "DIN W02 Light",
+              fontSize: "2rem",
+            }}
+          >
             {t(
               `portfolio${category.charAt(0).toUpperCase() + category.slice(1)}`
             )}
           </h2>
         </Box>
       </Box>
-      <ResponsiveGallery
-        useLightBox
-        numOfMediaPerRow={{
-          xs: 1,
-          s: 1,
-          m: 1,
-          l: 2,
-          xl: 2,
-          xxl: 3,
-        }}
-        media={media}
-      />
+
+      {category === "video" ? (
+        <Grid container spacing={2} sx={{ maxWidth: "1280px" }}>
+          {media.map((item, index) => (
+            <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  height: "0",
+                  paddingTop: "56.25%", // 16:9 aspect ratio
+                  overflow: "hidden",
+                  gap: '1rem',
+                  "& iframe": {
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                  },
+                }}
+              >
+                {loadingVideos[index] && (
+                  <Loader
+                    sx={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                    }}
+                  />
+                )}
+                <iframe
+                  src={item.src}
+                  title={item.alt}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  onLoad={() => handleVideoLoad(index)}
+                />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <ResponsiveGallery
+          useLightBox
+          numOfMediaPerRow={{
+            xs: 1,
+            s: 1,
+            m: 1,
+            l: 2,
+            xl: 2,
+            xxl: 2,
+          }}
+          media={media}
+        />
+      )}
     </Box>
   );
 }

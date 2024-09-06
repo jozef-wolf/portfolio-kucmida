@@ -1,5 +1,5 @@
 {
-  "photography": "Fotografia",
+  "photoVideo": "Foto & Wideo",
   "portfolio": "Portfolio",
   "aboutMe": "O mnie",
   "contact": "Kontakt",
@@ -12,5 +12,6 @@
   "portfolioTravel": "Podróże",
   "portfolioFamily": "Rodzina",
   "portfolioOthers": "Inne",
+  "portfolioVideo": "Wideo",
   "categoryNotFound": "Kategoria nie znaleziona"
 }
