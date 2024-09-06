@@ -151,7 +151,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           }}
         >
           <CenteredUnderlineLink to="/about-me">
-            {t("aboutMe")}
+            {t("aboutMe").toUpperCase()}
           </CenteredUnderlineLink>
         </ListItem>
         <ListItem
@@ -168,7 +168,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           }}
         >
           <CenteredUnderlineLink to="/contact">
-            {t("contact")}
+            {t("contact").toUpperCase()}
           </CenteredUnderlineLink>
         </ListItem>
         <ListItem
@@ -276,13 +276,13 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             }}
           >
             <CenteredUnderlineLink to="/about-me">
-              {t("aboutMe")}
+              {t("aboutMe").toUpperCase()}
             </CenteredUnderlineLink>
             <ListItem
               disablePadding
               sx={{
                 position: "relative",
-                width: "7rem",
+                width: "9rem",
                 color: "black",
                 textDecoration: "none",
                 display: "inline-block",
@@ -298,7 +298,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <ListItem sx={{ height: "5rem" }}>{t("portfolio")}</ListItem>
+              <ListItem sx={{ height: "5rem" }}>{t("portfolio").toUpperCase()}</ListItem>
               <Box
                 className="dropdown"
                 sx={{
@@ -341,7 +341,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               </Box>
             </ListItem>
             <CenteredUnderlineLink to="/contact">
-              {t("contact")}
+              {t("contact").toUpperCase()}
             </CenteredUnderlineLink>
             <Select
               value={i18n.language}
