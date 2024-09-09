@@ -25,92 +25,94 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Box
-      component="main"
-      sx={{
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        overflow: "hidden",
-        position: "relative",
-        height: "100vh",
-        // backgroundColor: "#000", // Optional: to see image borders more clearly
-      }}
-    >
+    <div className="homepage">
       <Box
+        component="main"
         sx={{
-          width: "100%",
-          height: "100%",
+          flex: 1,
           display: "flex",
-          flexDirection: { xs: "column", md: "row" }, // Change direction based on screen size
+          justifyContent: "center",
+          alignItems: "center",
+          overflow: "hidden",
           position: "relative",
+          height: "100vh",
         }}
       >
         <Box
           sx={{
-            flex: 1,
-            overflow: "hidden",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             position: "relative",
           }}
         >
-          <img
-            src="/image1.jpg"
-            alt="Image 1"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition: "opacity 1s ease-in-out, transform 0.5s ease-in-out",
+          <Box
+            sx={{
+              flex: 1,
+              overflow: "hidden",
+              position: "relative",
             }}
-          />
-        </Box>
-        <Box
-          sx={{
-            flex: 1,
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          <img
-            src="/image2.jpg"
-            alt="Image 2"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition:
-                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+          >
+            <img
+              src="/image1.jpg"
+              alt="Image 1"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: loaded ? 1 : 0,
+                transform: loaded ? "scaleX(1)" : "scaleX(0)",
+                transition:
+                  "opacity 1s ease-in-out, transform 0.5s ease-in-out",
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              overflow: "hidden",
+              position: "relative",
             }}
-          />
-        </Box>
-        <Box
-          sx={{
-            flex: 1,
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          <img
-            src="/image3.jpg"
-            alt="Image 3"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "scaleX(1)" : "scaleX(0)",
-              transition:
-                "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+          >
+            <img
+              src="/image2.jpg"
+              alt="Image 2"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: loaded ? 1 : 0,
+                transform: loaded ? "scaleX(1)" : "scaleX(0)",
+                transition:
+                  "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              flex: 1,
+              overflow: "hidden",
+              position: "relative",
             }}
-          />
+          >
+            <img
+              src="/image3.jpg"
+              alt="Image 3"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: loaded ? 1 : 0,
+                transform: loaded ? "scaleX(1)" : "scaleX(0)",
+                transition:
+                  "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+              }}
+            />
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 };
 

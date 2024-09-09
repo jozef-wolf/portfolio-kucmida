@@ -2,9 +2,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useTranslation } from "react-i18next";
+import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 
 const Footer = () => {
-  const { t } = useTranslation(); // Translation hook
+  const { i18n } = useTranslation(); // Translation hook
+  const handleLanguageChange = (event: SelectChangeEvent<string>) => {
+    i18n.changeLanguage(event.target.value);
+  };
   return (
     <Box
       component="footer"
@@ -13,8 +17,8 @@ const Footer = () => {
         display: "flex", // Use flexbox for alignment
         justifyContent: "space-between", // Space out items
         alignItems: "center", // Center items vertically
-        backgroundColor: "#f8f8f8",
-        borderTop: "1px solid #e0e0e0",
+        backgroundColor: "#ffffff",
+        boxShadow: "0px 0px 9px -1px #eeeeee",
         mt: "auto",
       }}
     >
@@ -24,22 +28,22 @@ const Footer = () => {
         sx={{
           flex: 1,
           textAlign: "center",
-          fontSize: "1.25rem",
+          fontSize: { sm: "0.75rem", lg: "1rem" },
           fontFamily: "DIN W02 Light",
         }}
       >
-        © 2024 Paweł Kucmida {t("photography")}
+        © 2024 Paweł Kucmida
       </Typography>
-      <Box>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
         <a
           href="https://www.instagram.com/pawel_kucmida__/"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ textDecoration: "none", color: "inherit" }}
+          style={{ textDecoration: "none", color: "inherit", display: "flex" }}
         >
           <InstagramIcon
             sx={{
-              fontSize: "2rem",
+              fontSize: { sm: "1.5rem", lg: "2rem" },
               color: "black",
               opacity: 0.7, // Default opacity
               "&:hover": {
@@ -49,6 +53,14 @@ const Footer = () => {
             }}
           />
         </a>
+        <Select
+          value={i18n.language}
+          onChange={handleLanguageChange}
+          sx={{ ml: 4, height: "2rem" }}
+        >
+          <MenuItem value="en">English</MenuItem>
+          <MenuItem value="pl">Polski</MenuItem>
+        </Select>
       </Box>
     </Box>
   );

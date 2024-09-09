@@ -212,11 +212,13 @@ export default function PortfolioPage() {
       sx={{
         p: 2,
         height: "100%",
-        width: "80vw",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
+        width: "100vw",
+        maxWidth: "1280px",
+        overflow: "hidden",
       }}
     >
       <Box
@@ -230,16 +232,6 @@ export default function PortfolioPage() {
           width: "100%",
         }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            left: 0,
-            display: "flex",
-            alignItems: "center",
-            height: "100%",
-            px: 2,
-          }}
-        ></Box>
         <Box
           sx={{
             textAlign: "center",
@@ -261,7 +253,6 @@ export default function PortfolioPage() {
           </h2>
         </Box>
       </Box>
-
       {category === "video" ? (
         <Grid container spacing={2} sx={{ maxWidth: "1280px" }}>
           {media.map((item, index) => (
@@ -271,9 +262,9 @@ export default function PortfolioPage() {
                   position: "relative",
                   width: "100%",
                   height: "0",
-                  paddingTop: "56.25%", // 16:9 aspect ratio
+                  paddingTop: { sm: "100%", lg: "52%" }, // 16:9 aspect ratio
                   overflow: "hidden",
-                  gap: '1rem',
+                  gap: "1rem",
                   "& iframe": {
                     position: "absolute",
                     top: 0,
@@ -284,16 +275,7 @@ export default function PortfolioPage() {
                   },
                 }}
               >
-                {loadingVideos[index] && (
-                  <Loader
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  />
-                )}
+                {loadingVideos[index] && <Loader />}
                 <iframe
                   src={item.src}
                   title={item.alt}
@@ -312,9 +294,9 @@ export default function PortfolioPage() {
             xs: 1,
             s: 1,
             m: 1,
-            l: 2,
-            xl: 2,
-            xxl: 2,
+            l: 3,
+            xl: 3,
+            xxl: 3,
           }}
           media={media}
         />

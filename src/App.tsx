@@ -9,16 +9,16 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]); 
+  }, [pathname]);
 
   return (
     <div className="App">
       <DrawerAppBar />
-      <main className="Main">
+      <div className="Main">
         <div className="Container">
           <Outlet />
         </div>
-      </main>
+      </div>
       <Footer />
     </div>
   );

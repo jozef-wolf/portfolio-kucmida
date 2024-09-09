@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
-import PortfolioCategoryPage from "./pages/PortfolioCategoryPage";
 import AboutMe from "./pages/AboutMePage";
 import Contact from "./pages/ContactPage";
 import PortfolioPage from "./pages/PortfolioPage"; // Component to render individual categories
@@ -19,10 +18,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: "portfolio",
-        element: <PortfolioCategoryPage />, // Portfolio landing page for categories
       },
       {
         path: "about-me",

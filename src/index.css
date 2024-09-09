@@ -1,6 +1,6 @@
 body {
-  font-family: 'DIN W02 Light', sans-serif,Arial, Helvetica, ;
-  overflow-x: hidden; 
+  font-family: "DIN W02 Light", sans-serif, Arial, Helvetica;
+  overflow-x: hidden;
 }
 
 .App {
@@ -12,12 +12,16 @@ body {
 
 .Main {
   display: flex;
-  justify-content: center; /* Adjust alignment based on needs */
-  width: 100vw;
-}
+  justify-content: center;
+  width: 100%;
+} 
 
 .Container {
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
 }
 
 .Gallery {
@@ -48,6 +52,22 @@ body {
 }
 
 .logo-mobile {
-  font-size: 1.2rem;
-  text-align: left;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+}
+
+.logo-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

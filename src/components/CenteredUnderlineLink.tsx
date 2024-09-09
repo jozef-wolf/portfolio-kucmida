@@ -30,7 +30,7 @@ const CenteredUnderlineLink: React.FC<CenteredUnderlineLinkProps> = ({
         overflow: "hidden",
         margin: "0 1rem", // Adjust margin to create space between links
         fontFamily: "DIN W02 Light",
-        fontSize: "1.5rem",
+        fontSize: "1rem",
         "&::after": {
           content: '""',
           position: "absolute",

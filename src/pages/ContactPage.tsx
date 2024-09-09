@@ -13,7 +13,8 @@ const ContactPage: React.FC = () => {
       <Box
         component="main"
         sx={{
-          p: 3, // Padding
+          pX: 3,
+          pt: { xs: 3 }, 
           mx: { xs: "5%", sm: "10%", md: "15%", lg: "20%" }, // Responsive margins
           maxWidth: "1200px", // Optional: Max width to ensure content doesn't stretch too wide
           margin: "auto", // Center content horizontally
@@ -23,21 +24,24 @@ const ContactPage: React.FC = () => {
         <Typography
           variant="h4"
           gutterBottom
-          sx={{ fontFamily: "DIN W02 Light", fontSize: "3rem" }}
+          sx={{
+            fontFamily: "DIN W02 Light",
+            fontSize: "2rem",
+            paddingBottom: "4rem",
+          }}
         >
           {t("contactTitle")}
         </Typography>
-        <Typography sx={{ fontSize: "1.5rem", fontFamily: "DIN W02 Light" }}>
+        <Typography sx={{ fontSize: "1.25rem", fontFamily: "DIN W02 Light" }}>
           {t("contactDescription")}
         </Typography>
         <Typography
           sx={{
-            fontSize: "1.5rem",
+            fontSize: "1.25rem",
             marginTop: "1rem",
             fontFamily: "DIN W02 Light",
           }}
         >
-          {t("phoneLabel")}{" "}
           <a
             href="tel:999999999"
             style={{
@@ -46,11 +50,10 @@ const ContactPage: React.FC = () => {
               fontWeight: "bold",
             }}
           >
-            +48 999 999 999
+            +48 516 545 437
           </a>
         </Typography>
-        <Typography sx={{ fontSize: "1.5rem", fontFamily: "DIN W02 Light" }}>
-          {t("emailLabel")}{" "}
+        <Typography sx={{ fontSize: "1.25rem", fontFamily: "DIN W02 Light" }}>
           <a
             href="mailto:example@gmail.com"
             style={{
@@ -62,10 +65,7 @@ const ContactPage: React.FC = () => {
             example@gmail.com
           </a>
         </Typography>
-        <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem", fontFamily: "DIN W02 Light" }}>
-          {t("contactFooter")}
-        </Typography>
-        <Typography sx={{ fontSize: "1.5rem", mt: 2 }}>
+        <Typography sx={{ fontSize: "1.25rem", mt: 2 }}>
           <a
             href="https://www.instagram.com/pawel_kucmida__/"
             target="_blank"
@@ -74,7 +74,7 @@ const ContactPage: React.FC = () => {
           >
             <InstagramIcon
               sx={{
-                fontSize: "3rem",
+                fontSize: "2.5rem",
                 color: "black",
                 opacity: 0.7, // Default opacity
                 "&:hover": {

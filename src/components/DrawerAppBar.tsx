@@ -12,29 +12,26 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CenteredUnderlineLink from "./CenteredUnderlineLink";
 import { useTranslation } from "react-i18next";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Link } from "react-router-dom";
 
 interface Props {
   window?: () => Window;
 }
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const DrawerAppBar: React.FC<Props> = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [portfolioOpen, setPortfolioOpen] = React.useState(false);
-  const { t, i18n } = useTranslation(); // Translation hook
+  const { t } = useTranslation(); // Translation hook
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const handleLanguageChange = (event: SelectChangeEvent<string>) => {
-    i18n.changeLanguage(event.target.value);
-  };
   const [portfolioMobileOpen, setPortfolioMobileOpen] = React.useState(false);
 
   const handlePortfolioClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -53,16 +50,11 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           alignItems: "center",
           height: "6rem",
           paddingX: "0.1rem",
-          opacity: 0.7,
-          "&:hover": {
-            opacity: 1,
-            transition: "opacity 0.3s ease",
-          },
         }}
       >
-        <CenteredUnderlineLink to="/" color="black">
-          Paweł Kucmida {t("photoVideo")}
-        </CenteredUnderlineLink>
+        <Link to="/" className="logo-mobile">
+          <img src="/logoName.png" alt="logo" />
+        </Link>
       </Typography>
       <Divider />
       <List
@@ -74,6 +66,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
         }}
       >
         <ListItem
+          component="div" // Specify component type
           disablePadding
           sx={{
             position: "relative",
@@ -82,18 +75,19 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             overflow: "hidden",
             margin: "0 1rem",
             fontFamily: "DIN W02 Light",
-            fontSize: "1.5rem",
+            fontSize: "1rem",
+            textTransform: "uppercase",
             display: "flex",
             alignItems: "center",
             justifyContent: "center", // Center content horizontally
-            opacity: 0.7,
+            opacity: { sm: "1", lg: "0.7" },
             cursor: "pointer",
             "&:hover": {
               opacity: 1,
               transition: "opacity 0.3s ease",
             },
           }}
-          onClick={handlePortfolioClick}
+          onClick={handlePortfolioClick} // The onClick event now works with HTMLLIElement
         >
           <div style={{ flex: 1, textAlign: "center" }}>{t("portfolio")}</div>
           <div
@@ -102,7 +96,6 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             {!portfolioMobileOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
           </div>
         </ListItem>
-
         {portfolioMobileOpen && (
           <ListItem
             disablePadding
@@ -112,8 +105,8 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               alignItems: "center",
               opacity: 0.7,
               marginY: "1rem",
-              boxShadow: "0px 0px 9px -1px #c9c7c7",
-              background: "#ececec",
+              boxShadow: "0px 0px 9px -1px #e9e9e9",
+              background: "#f7f7f7",
               "&:hover": {
                 opacity: 1,
                 transition: "opacity 0.3s ease",
@@ -133,8 +126,8 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               {t("portfolioOthers")}
             </CenteredUnderlineLink>
             <CenteredUnderlineLink to="/video">
-                  {t("portfolioVideo")}
-                </CenteredUnderlineLink>
+              {t("portfolioVideo")}
+            </CenteredUnderlineLink>
           </ListItem>
         )}
         <ListItem
@@ -178,16 +171,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             textAlign: "center",
             justifyContent: "center",
           }}
-        >
-          <Select
-            value={i18n.language}
-            onChange={handleLanguageChange}
-            sx={{ width: "120px" }}
-          >
-            <MenuItem value="en">English</MenuItem>
-            <MenuItem value="pl">Polski</MenuItem>
-          </Select>
-        </ListItem>
+        ></ListItem>
       </List>
     </Box>
   );
@@ -201,9 +185,8 @@ const DrawerAppBar: React.FC<Props> = (props) => {
       <AppBar
         component="nav"
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backgroundColor: "rgb(255, 255, 255)",
           height: "6rem",
-          backdropFilter: "blur(10px)",
           boxShadow: "none",
           px: 2,
         }}
@@ -215,57 +198,44 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             alignItems: "center",
           }}
         >
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: "none" }, color: "black" }}
-          >
-            <MenuIcon sx={{ fontSize: 50 }} />
-          </IconButton>
           <Typography
             variant="h6"
             component="div"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "block" },
+              display: { xs: "none", sm: "none", md: "block", lg: "block" },
               textAlign: { md: "left" },
               marginLeft: { md: "1rem" },
               color: "black",
-              opacity: 0.7,
-              "&:hover": {
-                opacity: 1,
-                transition: "opacity 0.3s ease",
-              },
             }}
           >
-            <CenteredUnderlineLink to="/" color="black">
-              Paweł Kucmida {t("photoVideo")}
-            </CenteredUnderlineLink>
+            <Link to="/">
+              <div className="logo">
+                <img src="/logoMain.png" alt="Logo" />
+                <img
+                  src="/logoName.png"
+                  alt="logo"
+                  style={{ paddingTop: "8px" }}
+                />
+              </div>
+            </Link>
           </Typography>
           <Typography
             variant="h6"
             component="div"
             sx={{
               flexGrow: 1,
-              display: { xs: "flex", md: "none" },
-              alignItems: "end",
+              display: { xs: "block", sm: "block", md: "none", lg: "none" },
               textAlign: { md: "left" },
               marginLeft: { md: "1rem" },
               color: "black",
-              opacity: 0.7,
-              "&:hover": {
-                opacity: 1,
-                transition: "opacity 0.3s ease",
-              },
             }}
           >
-            <CenteredUnderlineLink to="/" color="black">
-              <div className="logo-mobile">
-                Paweł Kucmida {t("photoVideo")}
+            <Link to="/">
+              <div className="logo">
+                <img src="/logoMain.png" alt="Logo" />
               </div>
-            </CenteredUnderlineLink>
+            </Link>
           </Typography>
           <Box
             sx={{
@@ -282,14 +252,14 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               disablePadding
               sx={{
                 position: "relative",
-                width: "9rem",
+                width: "auto",
                 color: "black",
                 textDecoration: "none",
                 display: "inline-block",
                 padding: "0.5rem 0",
                 margin: "0 1rem", // Adjust margin to create space between links
                 fontFamily: "DIN W02 Light",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
                 textAlign: "center",
                 "&:hover .dropdown": {
                   display: "flex", // Show dropdown on hover
@@ -298,7 +268,9 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <ListItem sx={{ height: "5rem" }}>{t("portfolio").toUpperCase()}</ListItem>
+              <ListItem sx={{ height: "5rem" }}>
+                {t("portfolio").toUpperCase()}
+              </ListItem>
               <Box
                 className="dropdown"
                 sx={{
@@ -343,15 +315,16 @@ const DrawerAppBar: React.FC<Props> = (props) => {
             <CenteredUnderlineLink to="/contact">
               {t("contact").toUpperCase()}
             </CenteredUnderlineLink>
-            <Select
-              value={i18n.language}
-              onChange={handleLanguageChange}
-              sx={{ ml: 2 }}
-            >
-              <MenuItem value="en">English</MenuItem>
-              <MenuItem value="pl">Polski</MenuItem>
-            </Select>
           </Box>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ ml: 2, display: { md: "none" }, color: "black" }}
+          >
+            <MenuIcon sx={{ fontSize: 50 }} />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <nav>
