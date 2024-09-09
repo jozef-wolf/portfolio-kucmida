@@ -268,7 +268,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <ListItem sx={{ height: "5rem" }}>
+              <ListItem sx={{ height: "5rem", cursor:"pointer" }}>
                 {t("portfolio").toUpperCase()}
               </ListItem>
               <Box
@@ -283,9 +283,11 @@ const DrawerAppBar: React.FC<Props> = (props) => {
                   flexDirection: "column",
                   alignItems: "center",
                   gap: "1rem",
-                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  backgroundColor: "rgba(0, 0, 0, 0.8)",
                   backdropFilter: "blur(10px)",
                   boxShadow: "none",
+                  borderBottomLeftRadius: "3px",
+                  borderBottomRightRadius: "3px",
                   px: 2,
                   pb: 2,
                   transform: portfolioOpen
@@ -295,19 +297,19 @@ const DrawerAppBar: React.FC<Props> = (props) => {
                   transition: "transform 0.5s ease, opacity 0.7s ease",
                 }}
               >
-                <CenteredUnderlineLink to="/events">
+                <CenteredUnderlineLink to="/events" color="white">
                   {t("portfolioEvents")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/travel">
+                <CenteredUnderlineLink to="/travel" color="white">
                   {t("portfolioTravel")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/family">
+                <CenteredUnderlineLink to="/family" color="white">
                   {t("portfolioFamily")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/others">
+                <CenteredUnderlineLink to="/others" color="white">
                   {t("portfolioOthers")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/video">
+                <CenteredUnderlineLink to="/video" color="white">
                   {t("portfolioVideo")}
                 </CenteredUnderlineLink>
               </Box>

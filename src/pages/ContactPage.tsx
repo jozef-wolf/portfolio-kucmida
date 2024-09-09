@@ -14,7 +14,7 @@ const ContactPage: React.FC = () => {
         component="main"
         sx={{
           pX: 3,
-          pt: { xs: 3 }, 
+          pt: { xs: 3, xl: "20%" }, 
           mx: { xs: "5%", sm: "10%", md: "15%", lg: "20%" }, // Responsive margins
           maxWidth: "1200px", // Optional: Max width to ensure content doesn't stretch too wide
           margin: "auto", // Center content horizontally
