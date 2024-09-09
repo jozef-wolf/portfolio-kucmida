@@ -186,7 +186,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
         component="nav"
         sx={{
           backgroundColor: "rgb(255, 255, 255)",
-          height: "6rem",
+          height: { xs: "6rem", lg: "8rem" },
           boxShadow: "none",
           px: 2,
         }}
@@ -211,12 +211,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           >
             <Link to="/">
               <div className="logo">
-                <img src="/logoMain.png" alt="Logo" />
-                <img
-                  src="/logoName.png"
-                  alt="logo"
-                  style={{ paddingTop: "8px" }}
-                />
+                <img src="/logoName.png" alt="logo" />
               </div>
             </Link>
           </Typography>
@@ -268,7 +263,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               onMouseEnter={() => setPortfolioOpen(true)}
               onMouseLeave={() => setPortfolioOpen(false)}
             >
-              <ListItem sx={{ height: "5rem", cursor:"pointer" }}>
+              <ListItem sx={{ height: "5rem", cursor: "pointer" }}>
                 {t("portfolio").toUpperCase()}
               </ListItem>
               <Box
