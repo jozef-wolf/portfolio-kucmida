@@ -262,7 +262,7 @@ export default function PortfolioPage() {
                   position: "relative",
                   width: "100%",
                   height: "0",
-                  paddingTop: { sm: "100%", lg: "52%" }, // 16:9 aspect ratio
+                  paddingTop: "52%", 
                   overflow: "hidden",
                   gap: "1rem",
                   "& iframe": {

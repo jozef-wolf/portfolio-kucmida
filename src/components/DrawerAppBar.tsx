@@ -105,7 +105,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
               alignItems: "center",
               opacity: 0.7,
               marginY: "1rem",
-              boxShadow: "0px 0px 9px -1px #e9e9e9",
+              boxShadow: "0px 0px 9px -1px #f3f3f3",
               background: "#f7f7f7",
               "&:hover": {
                 opacity: 1,
@@ -283,11 +283,9 @@ const DrawerAppBar: React.FC<Props> = (props) => {
                   flexDirection: "column",
                   alignItems: "center",
                   gap: "1rem",
-                  backgroundColor: "rgba(0, 0, 0, 0.8)",
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
                   backdropFilter: "blur(10px)",
                   boxShadow: "none",
-                  borderBottomLeftRadius: "3px",
-                  borderBottomRightRadius: "3px",
                   px: 2,
                   pb: 2,
                   transform: portfolioOpen
@@ -297,19 +295,19 @@ const DrawerAppBar: React.FC<Props> = (props) => {
                   transition: "transform 0.5s ease, opacity 0.7s ease",
                 }}
               >
-                <CenteredUnderlineLink to="/events" color="white">
+                <CenteredUnderlineLink to="/events">
                   {t("portfolioEvents")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/travel" color="white">
+                <CenteredUnderlineLink to="/travel">
                   {t("portfolioTravel")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/family" color="white">
+                <CenteredUnderlineLink to="/family">
                   {t("portfolioFamily")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/others" color="white">
+                <CenteredUnderlineLink to="/others">
                   {t("portfolioOthers")}
                 </CenteredUnderlineLink>
-                <CenteredUnderlineLink to="/video" color="white">
+                <CenteredUnderlineLink to="/video">
                   {t("portfolioVideo")}
                 </CenteredUnderlineLink>
               </Box>
@@ -335,6 +333,7 @@ const DrawerAppBar: React.FC<Props> = (props) => {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
+          anchor="right"
           ModalProps={{
             keepMounted: true,
           }}
